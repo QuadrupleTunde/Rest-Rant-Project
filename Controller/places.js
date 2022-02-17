@@ -1,4 +1,4 @@
-const router = require('express').config()
+const router = require('express').Router()
 
 router.get('/', function(req,res){
 
