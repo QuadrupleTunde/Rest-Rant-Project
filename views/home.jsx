@@ -1,5 +1,4 @@
 const React = require('react')
-console.log(React)
 const Def = require('./default')
 
 function home(){
