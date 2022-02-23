@@ -6,6 +6,13 @@ app.set('views', __dirname + '/views')
 app.set('view engine', 'jsx')
 app.engine('jsx', require('express-react-views').createEngine())
 
+// passing
+app.use(express.urlencoded({ extended: true }))
+
+// public
+app.use(express.static('public'))
+
+
 app.get('/', function(req, res){
     //res.send("Hello World")
     res.render("home")
