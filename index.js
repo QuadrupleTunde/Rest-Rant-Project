@@ -9,6 +9,10 @@ app.engine('jsx', require('express-react-views').createEngine())
 // passing
 app.use(express.urlencoded({ extended: true }))
 
+// method-override
+const methodOverride = require('method-override')
+app.use(methodOverride('_method'))
+
 // public
 app.use(express.static('public'))
 

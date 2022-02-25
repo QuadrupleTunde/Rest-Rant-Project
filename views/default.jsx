@@ -1,3 +1,4 @@
+const { process_params } = require('express/lib/router')
 const React = require('react')
    
 function Def(props){
@@ -10,7 +11,13 @@ function Def(props){
                 <link rel="stylesheet" href="/css/style.css" />
             </head>
             <body>
-                
+            <nav>
+                    <ul>
+                        <li> <a href='/'>Home</a></li>
+                        <li><a href='/places'>Place</a></li>
+                        <li><a href='places/new'>Add Places</a></li>
+                    </ul>
+                </nav>
              <div>{props.children}</div> 
             
             </body>
