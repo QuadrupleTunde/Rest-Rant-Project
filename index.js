@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const app = express()
+const mongoose = require('mongoose')
 
 app.set('views', __dirname + '/views')
 app.set('view engine', 'jsx')
@@ -32,3 +33,7 @@ app.listen(process.env.PORT, function(){
 
     console.log("Im listening at 3000")
 })
+
+mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true}, 
+    () => { console.log('connected to mongo: ', process.env.MONGO_URI) }
+  )
