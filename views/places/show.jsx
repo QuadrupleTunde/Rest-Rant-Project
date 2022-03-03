@@ -2,14 +2,20 @@ const React = require('react')
 const Def = require('../default')
 
 function show(props){
-    console.log(props)
     return(
         <Def>
             <main>
-                <h1>{props.place.name}</h1>
-                <p>{props.place.cuisines}</p>
+            <div className="row"> 
+            <div className="col-sm-6">
                 <img src= {props.place.pic} alt={props.place.name}/>
-                <p>{props.place.city}, {props.place.state}</p>
+                <h3>Located in {props.place.city}, {props.place.state}</h3>
+            </div>
+            <div className="col-sm-6">
+                <h2>Description</h2>
+            <h3>{props.place.showEstablished}</h3>
+                <h4>{props.place.cuisines}</h4>
+            </div>
+            </div>
             </main>
             <a href={`/places/${props.id}/edit`} className="btn btn-warning"> Edit</a>
             <form action={`/places/${props.id}?_method=DELETE`} method='POST'> 
@@ -19,3 +25,4 @@ function show(props){
     )
 }
 module.exports = show
+
