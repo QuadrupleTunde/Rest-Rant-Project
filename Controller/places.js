@@ -58,8 +58,9 @@ router.get('/:id', (req, res) => {
 // edit
 router.get('/:id/edit', (req, res) => {
   db.Place.findById(req.params.id)
+  
 .then(places=>
-  {res.render('places/edit', {place:  places[id], id})
+  {res.render('places/edit', {place:  places})
 })
 .catch(err => {
   console.log('err', err)
@@ -69,10 +70,10 @@ router.get('/:id/edit', (req, res) => {
 
 //  update
 router.put('/:id', (req, res) => {
-  db.Place.findByIdAndUpdate(req.params.id)
+  db.Place.findByIdAndUpdate(req.params.id, req.body)
   .then(updatePlace=>{
       console.log('updatePlace', updatePlace)
-      res.redirect(`/places/${id}`)
+      res.redirect(`/places/${req.params.id}`)
   })
   .catch(err=>{
     console.log(err)
@@ -85,7 +86,7 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
   db.Place.findByIdAndDelete(req.params.id) 
     .then(deletePlace => { 
-      res.status(303).redirect(`/places/${id}`)
+      res.status(303).redirect('/places')
    
 })
 .catch(err=>{

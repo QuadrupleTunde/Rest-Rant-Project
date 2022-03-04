@@ -15,7 +15,7 @@ function Def(props){
                     <ul>
                         <li> <a href='/'>Home</a></li>
                         <li><a href='/places'>Place</a></li>
-                        <li><a href='places/new'>Add Places</a></li>
+                        <li><a href='/places/new'>Add Places</a></li>
                     </ul>
                 </nav>
              <div>{props.children}</div> 

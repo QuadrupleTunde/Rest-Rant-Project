@@ -7,7 +7,7 @@ function editForm(props){
         <Def>
             <main>
                 <h1>Edit Place</h1>
-                <form action={`/places/${props.id}?_method=PUT`} method="POST" >
+                <form action={`/places/${props.place._id}?_method=PUT`} method="POST" >
             <div className='form-group'>
                 <label htmlFor="name">Place Name</label>
                 <input className='form-control' id="name" name="name" defaultValue= {props.place.name} required/>
