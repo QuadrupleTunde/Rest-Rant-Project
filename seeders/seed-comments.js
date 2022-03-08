@@ -3,7 +3,7 @@ const db = require('../models')
 // To use await, we need an async function.
 async function seed() {
     // Get the place, H-Thai-ML
-    let place = await db.Place.findOne()
+    let place = await db.Place.findOne({name: "H-Thai-ML"})
     console.log(place)
     // Create a fake sample comment.
     let comment = await db.Comment.create({
@@ -22,7 +22,7 @@ async function seed() {
 
     // Add that comment to the place's comment array.
     place.comments.push(comment.id)
-    place.comments.push(extracomment.id)
+    // place.comments.push(extracomment.id)
     //save the place now that it has comment
     await place.save()
     

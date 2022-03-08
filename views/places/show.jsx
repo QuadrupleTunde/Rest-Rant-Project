@@ -13,9 +13,8 @@ function show(props){
                     <strong>-{c.author}</strong>
                 </h3>
                 <h4>Rating:{c.stars}</h4>
-
-
-            </div>
+           </div>
+           
         )
     })}
     return(
@@ -36,13 +35,27 @@ function show(props){
             <hr/>
             <h2>Comments</h2>
             {comments}
+            <form action={`/places/${props.place}`} method='POST'> 
+            <labels htmlFor="Author"></labels>
+            <input type= "text" id = "Author" name ="Author"/>
+            <labels htmlFor="Author">Author</labels>
+            <input type= "text" id = "Author" name ="Author"/>
+            <labels htmlFor="content">Content</labels>
+            <textarea value="we are waiting for your feedback"></textarea>
+            <labels htmlFor="rating">Star Rating</labels>
+            <input type= "range" id = "rating" name ="rating"/>
+            <labels htmlFor="rant">Rant</labels>
+            <input type= "checkbox" id = "rant" name ="rant"/>
+            <button type="submit" className="btn btn-danger"> Add comment</button>
+            </form>
             </div>
             </main>
 
             <a href={`/places/${props.place._id}/edit`} className="btn btn-warning"> Edit</a>
             <form action={`/places/${props.place._id}?_method=DELETE`} method='POST'> 
             <button type="submit" className="btn btn-danger"> Delete</button>
-            </form>   
+            </form>  
+              
         </Def>
     )
 }
