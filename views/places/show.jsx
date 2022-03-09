@@ -3,6 +3,19 @@ const Def = require('../default')
 
 function show(props){
     let comments =(<h3 className= "inactive">No comment yet!</h3>)
+    let rating =(<h3 className='inactive'>Not yet rated</h3>)
+    if(props.place.comments.length){
+        let sumRatings = props.place.comments.reduce((tot, c)=>{
+            return tot + c.stars
+        }, 0)
+        let averageRating = Math.ceil(sumRatings / props.place.comments.length)
+        console.log(averageRating)
+        let stars =""
+        for(let i=0; i<averageRating; i++){
+            stars += "⭐"
+        }
+        rating=(<h3>{stars} stars</h3>)
+    }
     if (props.place.comments.length){
         comments= props.place.comments.map(c=>{
         return(
@@ -24,6 +37,9 @@ function show(props){
             <div className="row"> 
             <div className="col-sm-6">
                 <h1>{props.place.name}</h1>
+                <h2>Rating</h2>
+                {rating}
+                <br/>
                 <img src= {props.place.pic} alt={props.place.name}/>
                 <h3>Located in {props.place.city}, {props.place.state}</h3>
             </div>
@@ -35,15 +51,13 @@ function show(props){
             <hr/>
             <h2>Comments</h2>
             {comments}
-            <form action={`/places/${props.place}`} method='POST'> 
-            <labels htmlFor="Author"></labels>
-            <input type= "text" id = "Author" name ="Author"/>
-            <labels htmlFor="Author">Author</labels>
-            <input type= "text" id = "Author" name ="Author"/>
+            <form action={`/places/${props.place.id}/comment`} method='POST'> 
+            <labels htmlFor="author">Author</labels>
+            <input type= "text" id = "author" name ="author"/>
             <labels htmlFor="content">Content</labels>
-            <textarea value="we are waiting for your feedback"></textarea>
-            <labels htmlFor="rating">Star Rating</labels>
-            <input type= "range" id = "rating" name ="rating"/>
+            <textarea id= "content"  name= "content" value="we are waiting for your feedback"></textarea>
+            <labels htmlFor="stars">Star Rating</labels>
+            <input type= "range" min="0" max="5" id = "stars" name ="stars"/>
             <labels htmlFor="rant">Rant</labels>
             <input type= "checkbox" id = "rant" name ="rant"/>
             <button type="submit" className="btn btn-danger"> Add comment</button>

@@ -55,10 +55,12 @@ router.post('/:id/comment', (req, res) => {
           })
       })
       .catch(err => {
+        console.log(err)
           res.render('error404')
       })
   })
   .catch(err => {
+    console.log(err)
       res.render('error404')
   })
 })

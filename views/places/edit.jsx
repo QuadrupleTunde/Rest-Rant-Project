@@ -24,11 +24,17 @@ function editForm(props){
                 <label htmlFor="state">State</label>
                 <input className='form-control' id="state" name="state" defaultValue= {props.place.state}/>
             </div>
-            <div className='form-group' >
+            <div className="form-group">
                 <label htmlFor="cuisines">Cuisines</label>
                 <input  className='form-control' id="cuisines" name="cuisines" defaultValue= {props.place.cuisines} required />
             </div>
-            <input  className='btn btn-primary' type="submit" value="Add Place" />
+            <div>
+                <div className="form-group col-sm-4">
+                <label htmlFor="founded">Founded</label>
+                </div>
+            </div>
+            <input  className='btn btn-primary' type="submit" value="Update Place" />
+            <input  className='form-control' id="founded" name="founded" defaultValue= {props.place.founded} required />
             </form>
             </main>
         </Def>
